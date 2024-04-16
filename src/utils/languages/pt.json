@@ -1,3 +1,6 @@
 {
-    "translations": {}
+    "translation": {
+        "chooseYourLanguageTitle": "Escolha seu idioma",
+        "continue": "Continuar"
+    }
 }
