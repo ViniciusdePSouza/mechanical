@@ -1,14 +1,6 @@
 import { TouchableOpacity, Text } from "react-native";
 import { styles } from "./styles";
-
-export type ButtonType = "PRIMARY" | "SECONDARY";
-
-interface CustomButtonProps {
-  title: string;
-  onPressFunction: (language: string) => void;
-  language?: string;
-  variant: ButtonType;
-}
+import { CustomButtonProps } from "../../@types";
 
 export function CustomButton({
   title,
