@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, TouchableOpacity } from "react-native";
+import { styles } from "./styles";
 
 export function DefineLanguage() {
   const navigation = useNavigation();
@@ -9,11 +10,7 @@ export function DefineLanguage() {
 
   return (
     <View
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
+      style={styles.container}
     >
       <TouchableOpacity style={{padding: 8, backgroundColor: 'yellow'}} onPress={handleNavigation}>
         <Text>Go to Home</Text>
