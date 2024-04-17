@@ -1,9 +1,20 @@
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
-import { View, Text, TouchableOpacity, Alert } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  Alert,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import { getWorkshops } from "../../services/workshopService";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import { AppError } from "../../utils/AppError";
+import { styles } from "./styles";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { CustomInput } from "../../components/CustomInput";
+import { Icon } from "@rneui/themed";
+import theme from '../../theme/global'
 
 export function Home() {
   const navigation = useNavigation();
@@ -32,23 +43,21 @@ export function Home() {
     }
   }
 
-  useEffect(() => {
-    fetchWorkshops();
-  }, []);
+  // useEffect(() => {
+  //   fetchWorkshops();
+  // }, []);
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <TouchableOpacity
-        style={{ padding: 8, backgroundColor: "yellow" }}
-        onPress={handleNavigation}
-      >
-        <Text>Go to details</Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.inputWrapper}>
+          <CustomInput />
+          <View style={styles.buttonWrapper}>
+            <TouchableOpacity style={styles.button}>
+              <Icon name={"search"} color={theme.COLORS.GRAY_500}/>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }
