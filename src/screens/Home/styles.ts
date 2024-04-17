@@ -6,12 +6,14 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: theme.COLORS.GRAY_400,
-    padding: 16
+    padding: 16,
+
   },
 
   inputWrapper: {
     width: '100%',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginBottom: 24
   },
 
   buttonWrapper: {
