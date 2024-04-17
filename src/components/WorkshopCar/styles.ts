@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 24,
+    marginBottom: 24
   },
 
   title: {

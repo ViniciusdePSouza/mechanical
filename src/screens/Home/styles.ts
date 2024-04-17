@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   inputWrapper: {
     width: '100%',
     flexDirection: 'row',
-    marginBottom: 24
+    marginBottom: 48
   },
 
   buttonWrapper: {

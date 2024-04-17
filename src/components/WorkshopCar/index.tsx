@@ -3,8 +3,9 @@ import { styles } from "./styles";
 import { Icon } from "@rneui/themed";
 import theme from "../../theme/global";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { WorkshopProps } from "../../@types";
 
-export function WorkshopCard() {
+export function WorkshopCard({ workshop }: { workshop: WorkshopProps }) {
   return (
     <View style={styles.container}>
       <Icon
@@ -14,8 +15,8 @@ export function WorkshopCard() {
         size={48}
       />
       <View>
-        <Text style={styles.title}>Nome da oficina</Text>
-        <Text style={styles.description}>Descrição curta da oficina</Text>
+        <Text style={styles.title}>{workshop.name}</Text>
+        <Text style={styles.description}>{workshop.shortDescription}</Text>
       </View>
       <TouchableOpacity style={styles.button}>
         <Text style={styles.details}>Details</Text>

@@ -6,6 +6,7 @@ import {
   Alert,
   TouchableWithoutFeedback,
   Keyboard,
+  FlatList,
 } from "react-native";
 import { getWorkshops } from "../../services/workshopService";
 import { AxiosError } from "axios";
@@ -25,7 +26,8 @@ export function Home() {
       active: true,
       address: "Rua Ignês Maria, 326 - Betim Industrial",
       associationCode: 601,
-      description: "A oficina Gecar presta serviços em Betim à mais de 30 anos, mantendo sempre a qualidade, respeito e transparência com seus clientes. Atuamos na área de funilaria e pintura, garantindo sempre sua satisfação em relação aos reparos em seu veículo, seja ele, usado ou semi novo, importado ou nacional. A garantia de nossos serviços é de 3 anos, tudo para garantirmos que nossos clientes se sintam sempre tranqüilos e satisfeitos. Serviços prestados.  Funilaria Pintura Limpeza geral do veículo Serviços de mecânica Revitalização de pintura (contratação à parte)",
+      description:
+        "A oficina Gecar presta serviços em Betim à mais de 30 anos, mantendo sempre a qualidade, respeito e transparência com seus clientes. Atuamos na área de funilaria e pintura, garantindo sempre sua satisfação em relação aos reparos em seu veículo, seja ele, usado ou semi novo, importado ou nacional. A garantia de nossos serviços é de 3 anos, tudo para garantirmos que nossos clientes se sintam sempre tranqüilos e satisfeitos. Serviços prestados.  Funilaria Pintura Limpeza geral do veículo Serviços de mecânica Revitalização de pintura (contratação à parte)",
       shortDescription: "Lanternagem e Pintura",
       email: "contato@hinovamobile.com.br",
       latitude: "-19.9622435",
@@ -34,39 +36,41 @@ export function Home() {
       phone1: "31-34193100",
       phone2: null,
       photo: "",
-      userFeedback: 0
+      userFeedback: 0,
     },
     {
       id: 2,
       active: true,
       address: "Rua Ignês Maria, 326 - Betim Industrial",
       associationCode: 601,
-      description: "A oficina Gecar presta serviços em Betim à mais de 30 anos, mantendo sempre a qualidade, respeito e transparência com seus clientes. Atuamos na área de funilaria e pintura, garantindo sempre sua satisfação em relação aos reparos em seu veículo, seja ele, usado ou semi novo, importado ou nacional. A garantia de nossos serviços é de 3 anos, tudo para garantirmos que nossos clientes se sintam sempre tranqüilos e satisfeitos. Serviços prestados.  Funilaria Pintura Limpeza geral do veículo Serviços de mecânica Revitalização de pintura (contratação à parte)",
+      description:
+        "A oficina Gecar presta serviços em Betim à mais de 30 anos, mantendo sempre a qualidade, respeito e transparência com seus clientes. Atuamos na área de funilaria e pintura, garantindo sempre sua satisfação em relação aos reparos em seu veículo, seja ele, usado ou semi novo, importado ou nacional. A garantia de nossos serviços é de 3 anos, tudo para garantirmos que nossos clientes se sintam sempre tranqüilos e satisfeitos. Serviços prestados.  Funilaria Pintura Limpeza geral do veículo Serviços de mecânica Revitalização de pintura (contratação à parte)",
       shortDescription: "Lanternagem e Pintura",
       email: "contato@hinovamobile.com.br",
       latitude: "-19.9622435",
       longitude: "-44.175102",
-      name: "Oficina Gecar",
+      name: "Oficina Tralala",
       phone1: "31-34193100",
       phone2: null,
       photo: "",
-      userFeedback: 0
+      userFeedback: 0,
     },
     {
       id: 3,
       active: true,
       address: "Rua Ignês Maria, 326 - Betim Industrial",
       associationCode: 601,
-      description: "A oficina Gecar presta serviços em Betim à mais de 30 anos, mantendo sempre a qualidade, respeito e transparência com seus clientes. Atuamos na área de funilaria e pintura, garantindo sempre sua satisfação em relação aos reparos em seu veículo, seja ele, usado ou semi novo, importado ou nacional. A garantia de nossos serviços é de 3 anos, tudo para garantirmos que nossos clientes se sintam sempre tranqüilos e satisfeitos. Serviços prestados.  Funilaria Pintura Limpeza geral do veículo Serviços de mecânica Revitalização de pintura (contratação à parte)",
+      description:
+        "A oficina Gecar presta serviços em Betim à mais de 30 anos, mantendo sempre a qualidade, respeito e transparência com seus clientes. Atuamos na área de funilaria e pintura, garantindo sempre sua satisfação em relação aos reparos em seu veículo, seja ele, usado ou semi novo, importado ou nacional. A garantia de nossos serviços é de 3 anos, tudo para garantirmos que nossos clientes se sintam sempre tranqüilos e satisfeitos. Serviços prestados.  Funilaria Pintura Limpeza geral do veículo Serviços de mecânica Revitalização de pintura (contratação à parte)",
       shortDescription: "Lanternagem e Pintura",
       email: "contato@hinovamobile.com.br",
       latitude: "-19.9622435",
       longitude: "-44.175102",
-      name: "Oficina Gecar",
+      name: "Oficina Legal",
       phone1: "31-34193100",
       phone2: null,
       photo: "",
-      userFeedback: 0
+      userFeedback: 0,
     },
   ]);
   const navigation = useNavigation();
@@ -96,9 +100,17 @@ export function Home() {
   }
 
   const FlatListHeader = () => {
-    
-  }
-
+    return (
+      <View style={styles.inputWrapper}>
+        <CustomInput />
+        <View style={styles.buttonWrapper}>
+          <TouchableOpacity style={styles.button}>
+            <Icon name={"search"} color={theme.COLORS.GRAY_500} />
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  };
 
   // useEffect(() => {
   //   fetchWorkshops();
@@ -106,15 +118,11 @@ export function Home() {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={styles.container}>
-        <View style={styles.inputWrapper}>
-          <CustomInput />
-          <View style={styles.buttonWrapper}>
-            <TouchableOpacity style={styles.button}>
-              <Icon name={"search"} color={theme.COLORS.GRAY_500} />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <WorkshopCard/>
+        <FlatList
+          ListHeaderComponent={<FlatListHeader />}
+          data={workshops}
+          renderItem={({ item }: { item: WorkshopProps }) => <WorkshopCard workshop={item}/>}
+        />
       </SafeAreaView>
     </TouchableWithoutFeedback>
   );
