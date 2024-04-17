@@ -1,5 +1,20 @@
 import axios from "axios";
+import { AppError } from "../utils/AppError";
 
-export const api = axios.create({
-    baseURL: 'http://app.hinovamobile.com.br/ProvaConhecimentoWebApi'
-})
+const api = axios.create({
+  baseURL: "http://app.hinovamobile.com.br/ProvaConhecimentoWebApi",
+});
+
+api.interceptors.request.use(
+  (response) => response,
+  (error) => {
+    console.log('er')
+    if (axios.isAxiosError(error)) {
+      Promise.reject(new AppError(error.message));
+    } else {
+      Promise.reject(error);
+    }
+  }
+);
+
+export { api };

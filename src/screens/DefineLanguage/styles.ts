@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
+    textAlign: "center",
     fontWeight: "bold",
     color: theme.COLORS.YELLOW_500,
   }
