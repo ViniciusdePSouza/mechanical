@@ -1,3 +1,4 @@
 export type SearchPlayerFormData = {
-    name?: string;
-  };
+  name?: string;
+};
+

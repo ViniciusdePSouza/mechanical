@@ -3,22 +3,24 @@ import theme from "../../theme/global";
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: "row",
     width: "100%",
-    alignItems: "center",
+    alignItems: "flex-start",
     gap: 16,
-    backgroundColor: theme.COLORS.GRAY_500,
-    borderTopLeftRadius: 8,
-    borderBottomLeftRadius: 8,
+    backgroundColor: "transparent",
+    borderRadius: 8,
     padding: 16,
+  },
+  label: {
+    fontSize: theme.FONT_SIZE.MD,
+    fontWeight: "400",
+    color: theme.COLORS.GRAY_200,
   },
 
   input: {
-    width: '85%',
+    width: "100%",
     color: theme.COLORS.YELLOW_700,
     backgroundColor: theme.COLORS.GRAY_400,
-    padding: 8,
-    borderRadius: 8
+    padding: 12,
+    borderRadius: 8,
   },
 });

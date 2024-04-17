@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.COLORS.GRAY_400,
     padding: 16,
-
   },
 
   inputWrapper: {

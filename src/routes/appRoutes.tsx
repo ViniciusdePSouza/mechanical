@@ -22,7 +22,7 @@ const MainTabs = () => {
         tabBarActiveTintColor: theme.COLORS.YELLOW_700,
         tabBarInactiveTintColor: theme.COLORS.GRAY_300,
         tabBarStyle: {
-          backgroundColor: theme.COLORS.GREEN_700,
+          backgroundColor: theme.COLORS.GRAY_600,
           borderTopWidth: 0,
           height: Platform.OS === "android" ? 62 : 84,
           paddingTop: Platform.OS === "android" ? 8 : 16,
@@ -44,7 +44,7 @@ const MainTabs = () => {
          component={IndicateFriend}
          options={{
            tabBarIcon: ({ color }) => {
-             return <Icon name="home" size={36} color={color} />;
+             return <Icon type="entypo" name="add-user" size={36} color={color} />;
            },
          }}
         />

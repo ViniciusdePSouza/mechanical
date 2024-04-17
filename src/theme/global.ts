@@ -7,10 +7,6 @@ export default {
 
       BRONZE_500: '#CD7F32',
       BRONZE_700: '#986634',
-      
-      GREEN_700: '#084f23',
-      GREEN_500: '#145f32',
-      GREEN_300: '#13a328',
   
       RED: '#F75A68',
       RED_DARK: '#AA2834',
