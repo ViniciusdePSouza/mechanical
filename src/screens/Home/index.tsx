@@ -17,11 +17,12 @@ import { CustomInput } from "../../components/CustomInput";
 import { Icon } from "@rneui/themed";
 import theme from "../../theme/global";
 import { SearchPlayerFormData, WorkshopProps } from "../../@types";
-import { WorkshopCard } from "../../components/WorkshopCar";
+import { WorkshopCard } from "../../components/WorkshopCard";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 const SearchPlayerSchema = yup.object({
   name: yup.string(),
@@ -81,11 +82,14 @@ export function Home() {
       userFeedback: 0,
     },
   ]);
-  const [exibitionWorkshops, setExibitionWorkshops] = useState<WorkshopProps[]>([])
+  const [exibitionWorkshops, setExibitionWorkshops] = useState<WorkshopProps[]>(
+    []
+  );
   const { control, handleSubmit, reset } = useForm<SearchPlayerFormData>({
     resolver: yupResolver(SearchPlayerSchema),
   });
   const navigation = useNavigation();
+  const { t } = useTranslation();
 
   function handleNavigation() {
     navigation.navigate("Details" as never);
@@ -129,7 +133,7 @@ export function Home() {
 
   useEffect(() => {
     setExibitionWorkshops(workshops);
-  }, [])
+  }, []);
 
   const FlatListHeader = () => {
     return (
@@ -143,7 +147,7 @@ export function Home() {
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
-                placeholder="Pesquise pelo nome"
+                placeholder={t("searchByName")}
                 onSubmitEditing={handleSubmit(handleSearchPlayer)}
               />
             );
@@ -169,7 +173,7 @@ export function Home() {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={styles.container}>
         <FlatList
-        style={{width: '100%'}}
+          style={{ width: "100%" }}
           ListHeaderComponent={<FlatListHeader />}
           data={exibitionWorkshops}
           renderItem={({ item }: { item: WorkshopProps }) => (

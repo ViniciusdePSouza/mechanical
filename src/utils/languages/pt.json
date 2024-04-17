@@ -1,6 +1,8 @@
 {
     "translation": {
         "chooseYourLanguageTitle": "Escolha seu idioma",
-        "continue": "Continuar"
+        "continue": "Continuar",
+        "details": "Detalhes",
+        "searchByName": "Pesquise pelo nome"
     }
 }
