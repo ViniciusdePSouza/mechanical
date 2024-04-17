@@ -16,8 +16,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { CustomInput } from "../../components/CustomInput";
 import { Icon } from "@rneui/themed";
 import theme from "../../theme/global";
-import { WorkshopProps } from "../../@types";
+import { SearchPlayerFormData, WorkshopProps } from "../../@types";
 import { WorkshopCard } from "../../components/WorkshopCar";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { Controller, useForm } from "react-hook-form";
+
+const SearchPlayerSchema = yup.object({
+  name: yup.string(),
+});
 
 export function Home() {
   const [workshops, setWorkshops] = useState<WorkshopProps[]>([
@@ -73,9 +81,29 @@ export function Home() {
       userFeedback: 0,
     },
   ]);
+  const [exibitionWorkshops, setExibitionWorkshops] = useState<WorkshopProps[]>([])
+  const { control, handleSubmit, reset } = useForm<SearchPlayerFormData>({
+    resolver: yupResolver(SearchPlayerSchema),
+  });
   const navigation = useNavigation();
+
   function handleNavigation() {
     navigation.navigate("Details" as never);
+  }
+
+  function handleSearchPlayer({ name }: SearchPlayerFormData) {
+    if (name == undefined) {
+      setExibitionWorkshops(workshops);
+      return;
+    }
+
+    const filteredWorkshops = exibitionWorkshops.filter((workshop) =>
+      workshop.name.toLowerCase().includes(name!.toLowerCase())
+    );
+
+    setExibitionWorkshops(filteredWorkshops);
+
+    reset();
   }
 
   async function fetchWorkshops() {
@@ -99,12 +127,34 @@ export function Home() {
     }
   }
 
+  useEffect(() => {
+    setExibitionWorkshops(workshops);
+  }, [])
+
   const FlatListHeader = () => {
     return (
       <View style={styles.inputWrapper}>
-        <CustomInput />
+        <Controller
+          control={control}
+          name="name"
+          render={({ field: { onChange, onBlur, value } }) => {
+            return (
+              <CustomInput
+                onChangeText={onChange}
+                onBlur={onBlur}
+                value={value}
+                placeholder="Pesquise pelo nome"
+                onSubmitEditing={handleSubmit(handleSearchPlayer)}
+              />
+            );
+          }}
+        />
+
         <View style={styles.buttonWrapper}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={handleSubmit(handleSearchPlayer)}
+          >
             <Icon name={"search"} color={theme.COLORS.GRAY_500} />
           </TouchableOpacity>
         </View>
@@ -119,9 +169,12 @@ export function Home() {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={styles.container}>
         <FlatList
+        style={{width: '100%'}}
           ListHeaderComponent={<FlatListHeader />}
-          data={workshops}
-          renderItem={({ item }: { item: WorkshopProps }) => <WorkshopCard workshop={item}/>}
+          data={exibitionWorkshops}
+          renderItem={({ item }: { item: WorkshopProps }) => (
+            <WorkshopCard workshop={item} />
+          )}
         />
       </SafeAreaView>
     </TouchableWithoutFeedback>
