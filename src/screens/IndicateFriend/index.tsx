@@ -6,6 +6,7 @@ import {
   View,
   ScrollView,
   KeyboardAvoidingView,
+  Alert,
 } from "react-native";
 import { styles } from "./styles";
 import { FormCustomInput } from "../../components/FormInput";
@@ -21,6 +22,13 @@ import {
   validateCPF,
 } from "../../utils/validators/validators";
 import { userInfo } from "../../config/user";
+import {
+  IndicateFriendFormData,
+  IndicateFriendPostBody,
+  IndicateFriendProps,
+} from "../../@types";
+import { postFriend } from "../../services/friendService";
+import { useNavigation } from "@react-navigation/native";
 
 const IndicateFriendSchema = yup.object({
   friendsName: yup.string().required(() => t("validationFriendsName")),
@@ -50,17 +58,10 @@ const IndicateFriendSchema = yup.object({
     .required(() => t("validationVehiclePlate"))
     .matches(platePattern, () => t("vehiclePlatePatternValidation")),
 });
-type IndicateFriendFormData = {
-  friendsName: string;
-  friendsEmail: string;
-  friendsPhoneNumber: string;
-  associateName: string;
-  associateEmail: string;
-  associateCpf: string;
-  associatePhoneNumber: string;
-  vehiclePlate: string;
-};
+
 export function IndicateFriend() {
+  const navigation = useNavigation();
+
   const {
     control,
     handleSubmit,
@@ -70,7 +71,7 @@ export function IndicateFriend() {
     resolver: yupResolver(IndicateFriendSchema),
   });
 
-  function handleIndicateFriend({
+  async function handleIndicateFriend({
     associateCpf,
     associateEmail,
     associateName,
@@ -82,7 +83,7 @@ export function IndicateFriend() {
   }: IndicateFriendFormData) {
     const formattedDate = formatDate(new Date());
 
-    const indicationObj = {
+    const indicationObj: IndicateFriendProps = {
       CodigoAssociacao: String(userInfo.associationCode),
       DataCriacao: formattedDate,
       CpfAssociado: associateCpf,
@@ -95,13 +96,29 @@ export function IndicateFriend() {
       EmailAmigo: friendsEmail,
     };
 
-    const body = {
-      indicationObj,
+    const body: IndicateFriendPostBody = {
+      Indicacao: indicationObj,
       Remetente: userInfo.userEmail,
-      Copias: []
+      Copias: [],
+    };
+
+    const response = await handleIndication(body);
+
+    if (response["retornoErro"] != null) {
+      return Alert.alert(response["retornoErro"]);
     }
 
-    console.log(body)
+    Alert.alert(response["Sucesso"]);
+
+    reset();
+
+    navigation.navigate("DefineLanguage" as never);
+  }
+
+  async function handleIndication(body: IndicateFriendPostBody) {
+    const response = await postFriend(body);
+
+    return response;
   }
 
   return (
