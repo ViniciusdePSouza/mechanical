@@ -3,6 +3,26 @@
     "chooseYourLanguageTitle": "Choose your language",
     "continue": "Continue",
     "details": "Details",
-    "searchByName": "Search by name"
+    "searchByName": "Search by name",
+    "validationFriendsName": "Friend's name is required",
+    "friendsNamePlaceholder": "Friend's name",
+    "validationFriendsEmail": "Friend's email is required",
+    "friendsEmailPlaceholder": "Friend's email",
+    "validationValidEmail": "Must be a valid email address",
+    "validationFriendsPhone": "Friend's phone number is required",
+    "friendsPhonePlaceholder": "Friend's phone number",
+    "validationAssociateName": "Associate's name is required",
+    "associateNamePlaceholder": "Associate's name",
+    "validationAssociateEmail": "Associate's email is required",
+    "associateEmailPlaceholder": "Associate's email",
+    "validationCpfRequired": "Associate's CPF is required",
+    "associateCpfPlaceholder": "Associate's CPF",
+    "cpfValiation": "Invalid CPF",
+    "validationAssociatePhone": "Associate's phone number is required",
+    "associatePhonePlaceholder": "Associate's phone number",
+    "validationVehiclePlate": "Vehicle Plate is required",
+    "vehiclePlatePatternValidation": "Invalid plate pattern",
+    "vehiclePlatePlaceholder": "Vehicle plate => XXX0000"
+
   }
 }

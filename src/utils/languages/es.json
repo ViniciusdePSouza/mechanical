@@ -1,8 +1,27 @@
 {
-    "translation": {
-        "chooseYourLanguageTitle": "Elige tu idioma",
-        "continue": "Continuar",
-        "details": "Detalles",
-        "searchByName": "Buscar por nombre"
-    }
+  "translation": {
+    "chooseYourLanguageTitle": "Elige tu idioma",
+    "continue": "Continuar",
+    "details": "Detalles",
+    "searchByName": "Buscar por nombre",
+    "validationFriendsName": "El nombre del amigo es requerido.",
+    "friendsNamePlaceholder": "Nombre del amigo",
+    "validationFriendsEmail": "El email del amigo es requerido.",
+    "friendsEmailPlaceholder": "Email del amigo",
+    "validationValidEmail": "Debe ser una dirección de correo electrónico válida",
+    "friendsPhonePlaceholder": "Número de teléfono de un amigo",
+    "validationFriendsPhone": "Se requiere el número de teléfono de un amigo.",
+    "validationAssociateName": "El nombre del asociado es requerido.",
+    "associateNamePlaceholder": "Nombre del asociado",
+    "validationAssociateEmail": "Se requiere el correo electrónico del asociado",
+    "associateEmailPlaceholder": "Email del asociado",
+    "validationCpfRequired": "Se requiere el CPF del asociado",
+    "associateCpfPlaceholder": "Asociado's CPF",
+    "cpfValiation": "CPF no válido",
+    "validationAssociatePhone": "Se requiere el número de teléfono del asociado",
+    "associatePhonePlaceholder": "Número de teléfono del asociado",
+    "validationVehiclePlate": "La matrícula del vehículo es obligatoria.",
+    "vehiclePlatePatternValidation": "Patrón de placa no válido",
+    "vehiclePlatePlaceholder": "Placa del vehículo => XXX0000"
+  }
 }

@@ -40,4 +40,20 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 12,
   },
+
+  button: {
+    alignItems: "center",
+    color: theme.COLORS.GRAY_700,
+    paddingVertical: 20,
+    backgroundColor: theme.COLORS.YELLOW_700,
+    borderRadius: 8,
+  },
+  buttonText:{
+    color: theme.COLORS.GRAY_700,
+    fontSize: 16,
+    fontWeight: "700",
+  },
+  errorMessage: {
+    color: theme.COLORS.RED
+  }
 });

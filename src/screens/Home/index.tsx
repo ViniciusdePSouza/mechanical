@@ -24,7 +24,7 @@ import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 
-const SearchPlayerSchema = yup.object({
+const SearchWorkshopSchema = yup.object({
   name: yup.string(),
 });
 
@@ -86,7 +86,7 @@ export function Home() {
     []
   );
   const { control, handleSubmit, reset } = useForm<SearchPlayerFormData>({
-    resolver: yupResolver(SearchPlayerSchema),
+    resolver: yupResolver(SearchWorkshopSchema),
   });
   const navigation = useNavigation();
   const { t } = useTranslation();
