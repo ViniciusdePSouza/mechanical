@@ -8,7 +8,6 @@ const api = axios.create({
 api.interceptors.request.use(
   (response) => response,
   (error) => {
-    console.log('er')
     if (axios.isAxiosError(error)) {
       Promise.reject(new AppError(error.message));
     } else {

@@ -1,16 +1,16 @@
-export interface WorkshopProps {
-    id: number
-    name: string
-    description: string
-    shortDescription: string
-    address: string
-    latitude: string
-    longitude: string
-    photo: string
-    userFeedback: number
-    associationCode: number
-    email: string
-    phone1: string
-    phone2: any
-    active: boolean
+  export interface WorkshopAPIProps {
+    Id: number
+    Nome: string
+    Descricao: string
+    DescricaoCurta: string
+    Endereco: string
+    Latitude: string
+    Longitude: string
+    Foto: string
+    AvaliacaoUsuario: number
+    CodigoAssociacao: number
+    Email: string
+    Telefone1: string
+    Telefone2: any
+    Ativo: boolean
   }

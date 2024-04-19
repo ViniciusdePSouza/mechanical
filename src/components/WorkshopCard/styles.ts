@@ -6,10 +6,11 @@ export const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     paddingVertical: 12,
+    paddingHorizontal: 16,
     backgroundColor: theme.COLORS.GRAY_500,
     borderRadius: 8,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
     gap: 24,
     marginBottom: 24
   },
@@ -21,7 +22,7 @@ export const styles = StyleSheet.create({
     marginBottom: 12,
   },
   description: {
-    fontSize: theme.FONT_SIZE.MD,
+    fontSize: theme.FONT_SIZE.SM,
     fontWeight: "400",
     color: theme.COLORS.GRAY_200,
   },

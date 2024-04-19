@@ -16,7 +16,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { CustomInput } from "../../components/CustomInput";
 import { Icon } from "@rneui/themed";
 import theme from "../../theme/global";
-import { SearchPlayerFormData, WorkshopProps } from "../../@types";
+import {
+  SearchPlayerFormData,
+  WorkshopAPIProps
+} from "../../@types";
 import { WorkshopCard } from "../../components/WorkshopCard";
 
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -29,62 +32,10 @@ const SearchWorkshopSchema = yup.object({
 });
 
 export function Home() {
-  const [workshops, setWorkshops] = useState<WorkshopProps[]>([
-    {
-      id: 1,
-      active: true,
-      address: "Rua Ignês Maria, 326 - Betim Industrial",
-      associationCode: 601,
-      description:
-        "A oficina Gecar presta serviços em Betim à mais de 30 anos, mantendo sempre a qualidade, respeito e transparência com seus clientes. Atuamos na área de funilaria e pintura, garantindo sempre sua satisfação em relação aos reparos em seu veículo, seja ele, usado ou semi novo, importado ou nacional. A garantia de nossos serviços é de 3 anos, tudo para garantirmos que nossos clientes se sintam sempre tranqüilos e satisfeitos. Serviços prestados.  Funilaria Pintura Limpeza geral do veículo Serviços de mecânica Revitalização de pintura (contratação à parte)",
-      shortDescription: "Lanternagem e Pintura",
-      email: "contato@hinovamobile.com.br",
-      latitude: "-19.9622435",
-      longitude: "-44.175102",
-      name: "Oficina Gecar",
-      phone1: "31-34193100",
-      phone2: null,
-      photo: "",
-      userFeedback: 0,
-    },
-    {
-      id: 2,
-      active: true,
-      address: "Rua Ignês Maria, 326 - Betim Industrial",
-      associationCode: 601,
-      description:
-        "A oficina Gecar presta serviços em Betim à mais de 30 anos, mantendo sempre a qualidade, respeito e transparência com seus clientes. Atuamos na área de funilaria e pintura, garantindo sempre sua satisfação em relação aos reparos em seu veículo, seja ele, usado ou semi novo, importado ou nacional. A garantia de nossos serviços é de 3 anos, tudo para garantirmos que nossos clientes se sintam sempre tranqüilos e satisfeitos. Serviços prestados.  Funilaria Pintura Limpeza geral do veículo Serviços de mecânica Revitalização de pintura (contratação à parte)",
-      shortDescription: "Lanternagem e Pintura",
-      email: "contato@hinovamobile.com.br",
-      latitude: "-19.9622435",
-      longitude: "-44.175102",
-      name: "Oficina Tralala",
-      phone1: "31-34193100",
-      phone2: null,
-      photo: "",
-      userFeedback: 0,
-    },
-    {
-      id: 3,
-      active: true,
-      address: "Rua Ignês Maria, 326 - Betim Industrial",
-      associationCode: 601,
-      description:
-        "A oficina Gecar presta serviços em Betim à mais de 30 anos, mantendo sempre a qualidade, respeito e transparência com seus clientes. Atuamos na área de funilaria e pintura, garantindo sempre sua satisfação em relação aos reparos em seu veículo, seja ele, usado ou semi novo, importado ou nacional. A garantia de nossos serviços é de 3 anos, tudo para garantirmos que nossos clientes se sintam sempre tranqüilos e satisfeitos. Serviços prestados.  Funilaria Pintura Limpeza geral do veículo Serviços de mecânica Revitalização de pintura (contratação à parte)",
-      shortDescription: "Lanternagem e Pintura",
-      email: "contato@hinovamobile.com.br",
-      latitude: "-19.9622435",
-      longitude: "-44.175102",
-      name: "Oficina Legal",
-      phone1: "31-34193100",
-      phone2: null,
-      photo: "",
-      userFeedback: 0,
-    },
-  ]);
-  const [exibitionWorkshops, setExibitionWorkshops] = useState<WorkshopProps[]>(
-    []
-  );
+  const [workshops, setWorkshops] = useState<WorkshopAPIProps[]>([]);
+  const [exibitionWorkshops, setExibitionWorkshops] = useState<
+    WorkshopAPIProps[]
+  >([]);
   const { control, handleSubmit, reset } = useForm<SearchPlayerFormData>({
     resolver: yupResolver(SearchWorkshopSchema),
   });
@@ -102,7 +53,7 @@ export function Home() {
     }
 
     const filteredWorkshops = exibitionWorkshops.filter((workshop) =>
-      workshop.name.toLowerCase().includes(name!.toLowerCase())
+      workshop.Nome.toLowerCase().includes(name!.toLowerCase())
     );
 
     setExibitionWorkshops(filteredWorkshops);
@@ -112,16 +63,16 @@ export function Home() {
 
   async function fetchWorkshops() {
     try {
-      const response = await getWorkshops();
+      const response = await getWorkshops(601);
+
+      setWorkshops(response);
 
       return response;
     } catch (error) {
       const isAppError = error instanceof AppError;
       const isAxiosError = error instanceof AxiosError;
       var title = "";
-      if (isAppError) {
-        title = error.message;
-      } else if (isAxiosError) {
+      if (isAppError || isAxiosError) {
         title = error.message;
       } else {
         title = "Unexpected error occurred";
@@ -133,6 +84,10 @@ export function Home() {
 
   useEffect(() => {
     setExibitionWorkshops(workshops);
+  }, [workshops]);
+
+  useEffect(() => {
+    fetchWorkshops();
   }, []);
 
   const FlatListHeader = () => {
@@ -165,10 +120,6 @@ export function Home() {
       </View>
     );
   };
-
-  // useEffect(() => {
-  //   fetchWorkshops();
-  // }, []);
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={styles.container}>
@@ -176,7 +127,7 @@ export function Home() {
           style={{ width: "100%" }}
           ListHeaderComponent={<FlatListHeader />}
           data={exibitionWorkshops}
-          renderItem={({ item }: { item: WorkshopProps }) => (
+          renderItem={({ item }: { item: WorkshopAPIProps }) => (
             <WorkshopCard workshop={item} />
           )}
         />

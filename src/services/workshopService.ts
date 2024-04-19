@@ -1,9 +1,19 @@
 import { api } from "./api";
 
-export async function getWorkshops() {
+export async function getWorkshops(
+  associationCode?: number,
+  associateCpf?: string
+) {
   const resource = "/Api/Oficina";
 
-  const response = await api.get(resource);
+  const associationCodeParam = associationCode
+    ? `codigoAssociacao=${associationCode}`
+    : "";
+  const associateCpfParam = associateCpf ? `&associateCpf=${associateCpf}` : "";
 
-  return response 
+  
+  const url = resource + '?' + associationCodeParam + associateCpfParam
+  const response = await api.get(url);
+
+ return response.data['ListaOficinas'];
 }

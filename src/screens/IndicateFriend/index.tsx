@@ -131,6 +131,7 @@ export function IndicateFriend() {
           >
             <Text style={styles.title}>Indicate Friends</Text>
 
+
             <View style={styles.form}>
               <Text style={styles.sectionTitle}>Informações do amigo</Text>
 
