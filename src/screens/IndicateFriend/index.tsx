@@ -1,4 +1,10 @@
 import {
+  IndicateFriendFormData,
+  IndicateFriendPostBody,
+  IndicateFriendProps,
+} from "../../@types";
+
+import {
   Text,
   TouchableWithoutFeedback,
   Keyboard,
@@ -8,26 +14,28 @@ import {
   KeyboardAvoidingView,
   Alert,
 } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
 import { styles } from "./styles";
+
 import { FormCustomInput } from "../../components/FormInput";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
-import { TouchableOpacity } from "react-native-gesture-handler";
+
 import { t } from "i18next";
+
 import {
   formatDate,
   platePattern,
   validateCPF,
 } from "../../utils/validators/validators";
+
 import { userInfo } from "../../config/user";
-import {
-  IndicateFriendFormData,
-  IndicateFriendPostBody,
-  IndicateFriendProps,
-} from "../../@types";
+
 import { postFriend } from "../../services/friendService";
+
 import { useNavigation } from "@react-navigation/native";
 
 const IndicateFriendSchema = yup.object({

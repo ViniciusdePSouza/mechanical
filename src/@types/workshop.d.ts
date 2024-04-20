@@ -1,4 +1,4 @@
-  export interface WorkshopAPIProps {
+  export interface WorkshopProps {
     Id: number
     Nome: string
     Descricao: string

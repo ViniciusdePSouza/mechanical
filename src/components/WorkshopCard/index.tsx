@@ -1,12 +1,16 @@
+import { WorkshopProps } from "../../@types";
+
 import { View, Text, Image } from "react-native";
-import { styles } from "./styles";
-import { Icon } from "@rneui/themed";
-import theme from "../../theme/global";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { WorkshopAPIProps } from "../../@types";
+
+import { styles } from "./styles";
+import theme from "../../theme/global";
+
 import { useTranslation } from "react-i18next";
 
-export function WorkshopCard({ workshop }: { workshop: WorkshopAPIProps }) {
+import { Icon } from "@rneui/themed";
+
+export function WorkshopCard({ workshop }: { workshop: WorkshopProps }) {
   const { t } = useTranslation();
 
   return (

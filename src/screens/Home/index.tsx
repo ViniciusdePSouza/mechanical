@@ -1,4 +1,5 @@
-import { useNavigation } from "@react-navigation/native";
+import { SearchPlayerFormData, WorkshopProps } from "../../@types";
+
 import { useEffect, useState } from "react";
 import {
   View,
@@ -8,23 +9,26 @@ import {
   Keyboard,
   FlatList,
 } from "react-native";
-import { getWorkshops } from "../../services/workshopService";
-import { AxiosError } from "axios";
-import { AppError } from "../../utils/AppError";
-import { styles } from "./styles";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { CustomInput } from "../../components/CustomInput";
-import { Icon } from "@rneui/themed";
+
 import theme from "../../theme/global";
-import {
-  SearchPlayerFormData,
-  WorkshopAPIProps
-} from "../../@types";
+import { styles } from "./styles";
+
+import { getWorkshops } from "../../services/workshopService";
+
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Controller, useForm } from "react-hook-form";
+
+import { AxiosError } from "axios";
+
+import { CustomInput } from "../../components/CustomInput";
+import { AppError } from "../../utils/AppError";
 import { WorkshopCard } from "../../components/WorkshopCard";
+
+import { Icon } from "@rneui/themed";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Controller, useForm } from "react-hook-form";
+
 import { useTranslation } from "react-i18next";
 
 const SearchWorkshopSchema = yup.object({
@@ -32,19 +36,14 @@ const SearchWorkshopSchema = yup.object({
 });
 
 export function Home() {
-  const [workshops, setWorkshops] = useState<WorkshopAPIProps[]>([]);
-  const [exibitionWorkshops, setExibitionWorkshops] = useState<
-    WorkshopAPIProps[]
-  >([]);
+  const [workshops, setWorkshops] = useState<WorkshopProps[]>([]);
+  const [exibitionWorkshops, setExibitionWorkshops] = useState<WorkshopProps[]>(
+    []
+  );
   const { control, handleSubmit, reset } = useForm<SearchPlayerFormData>({
     resolver: yupResolver(SearchWorkshopSchema),
-  });
-  const navigation = useNavigation();
+  })
   const { t } = useTranslation();
-
-  function handleNavigation() {
-    navigation.navigate("Details" as never);
-  }
 
   function handleSearchPlayer({ name }: SearchPlayerFormData) {
     if (name == undefined) {
@@ -127,7 +126,7 @@ export function Home() {
           style={{ width: "100%" }}
           ListHeaderComponent={<FlatListHeader />}
           data={exibitionWorkshops}
-          renderItem={({ item }: { item: WorkshopAPIProps }) => (
+          renderItem={({ item }: { item: WorkshopProps }) => (
             <WorkshopCard workshop={item} />
           )}
         />

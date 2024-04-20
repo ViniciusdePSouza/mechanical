@@ -1,7 +1,10 @@
-import { useNavigation } from "@react-navigation/native";
 import { View, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import { styles } from "./styles";
+
 import { CustomButton } from "../../components/CustomButton";
+
 import "../../utils/languages/i18n";
 import { useTranslation } from "react-i18next";
 
