@@ -12,3 +12,7 @@ export interface CustomButtonProps {
 export interface FormCustomInputProps extends TextInputProps {
   label: string;
 }
+
+export interface DetailsProps {
+  workshop: WorkshopProps
+} 

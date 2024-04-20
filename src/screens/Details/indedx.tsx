@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 export function Details() {
   const navigation = useNavigation();
   function handleNavigation() {
-    navigation.navigate("Home" as never);
+    navigation.goBack();
   }
   return (
     <View

@@ -57,7 +57,7 @@ export function AppRoutes() {
       <Stack.Navigator initialRouteName="DefineLanguage" screenOptions={{headerShown: false}}>
         <Stack.Screen name="DefineLanguage" component={DefineLanguage} />
         <Stack.Screen name="HomeStack" component={MainTabs} />
-        <Stack.Screen name="Details" component={Details}/>
+        <Stack.Screen name="Details" component={Details} />
       </Stack.Navigator>
     );
   }
