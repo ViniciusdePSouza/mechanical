@@ -12,6 +12,7 @@ import { Icon } from "@rneui/themed";
 import { useTranslation } from "react-i18next";
 
 import { ProfileDetailsView } from "../../components/ProfileDetailsView";
+import { Rating } from "../../components/Rating";
 
 export function Details() {
   const [details, setDetails] = useState<WorkshopProps | undefined>(undefined);
@@ -73,6 +74,7 @@ export function Details() {
                 label={`${t('address')} : `}
                 content={details?.Endereco ?? `${t('noAddress')}`}
               />
+              <Rating rating={details?.AvaliacaoUsuario ?? 0}/>
             </View>
           </View>
 

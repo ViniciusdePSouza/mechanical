@@ -1,4 +1,4 @@
-import {  TextInputProps } from "react-native";
+import { TextInputProps } from "react-native";
 
 export type ButtonType = "PRIMARY" | "SECONDARY";
 
@@ -14,10 +14,14 @@ export interface FormCustomInputProps extends TextInputProps {
 }
 
 export interface DetailsProps {
-  workshop: WorkshopProps
-} 
+  workshop: WorkshopProps;
+}
 
 export interface ProfileDetailsViewProps {
   label: string;
   content: string;
+}
+
+export interface RatingProps {
+  rating: number;
 }
