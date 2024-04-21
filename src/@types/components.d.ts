@@ -16,3 +16,8 @@ export interface FormCustomInputProps extends TextInputProps {
 export interface DetailsProps {
   workshop: WorkshopProps
 } 
+
+export interface ProfileDetailsViewProps {
+  label: string;
+  content: string;
+}

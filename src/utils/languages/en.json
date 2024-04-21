@@ -22,7 +22,11 @@
     "associatePhonePlaceholder": "Associate's phone number",
     "validationVehiclePlate": "Vehicle Plate is required",
     "vehiclePlatePatternValidation": "Invalid plate pattern",
-    "vehiclePlatePlaceholder": "Vehicle plate => XXX0000"
-
+    "vehiclePlatePlaceholder": "Vehicle plate => XXX0000",
+    "phone": "Phone",
+    "address": "Address",
+    "noPhone": "No phone registered",
+    "noAddress": "No address registered",
+    "about": "About Us"
   }
 }

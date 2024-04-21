@@ -8,7 +8,7 @@ import { Home } from "../screens/Home";
 import { Icon } from "@rneui/themed";
 import { IndicateFriend } from "../screens/IndicateFriend";
 import { DefineLanguage } from "../screens/DefineLanguage";
-import { Details } from "../screens/Details/indedx";
+import { Details } from "../screens/Details";
 
 const Tab = createBottomTabNavigator<AppRoutesProps>();
 const Stack = createStackNavigator();
