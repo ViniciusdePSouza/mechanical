@@ -30,6 +30,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { useTranslation } from "react-i18next";
+import { Loading } from "../../components/Loading";
+import { useIsLoading } from "../../hooks/isLoadingContext";
 
 const SearchWorkshopSchema = yup.object({
   name: yup.string(),
@@ -40,9 +42,10 @@ export function Home() {
   const [exibitionWorkshops, setExibitionWorkshops] = useState<WorkshopProps[]>(
     []
   );
+  const isLoading = useIsLoading();
   const { control, handleSubmit, reset } = useForm<SearchPlayerFormData>({
     resolver: yupResolver(SearchWorkshopSchema),
-  })
+  });
   const { t } = useTranslation();
 
   function handleSearchPlayer({ name }: SearchPlayerFormData) {
@@ -61,13 +64,17 @@ export function Home() {
   }
 
   async function fetchWorkshops() {
+    isLoading.startRequest();
     try {
       const response = await getWorkshops(601);
 
       setWorkshops(response);
 
+      isLoading.finishRequest();
+
       return response;
     } catch (error) {
+      isLoading.finishRequest();
       const isAppError = error instanceof AppError;
       const isAxiosError = error instanceof AxiosError;
       var title = "";
@@ -119,6 +126,11 @@ export function Home() {
       </View>
     );
   };
+
+  if(isLoading.isLoading) {
+    return <Loading/>
+  }
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={styles.container}>
