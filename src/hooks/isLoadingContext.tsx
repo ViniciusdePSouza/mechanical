@@ -1,14 +1,5 @@
-import { ReactNode, createContext, useContext, useState } from "react";
-
-interface isLoadingType {
-  isLoading: boolean;
-  startRequest: () => void;
-  finishRequest: () => void;
-}
-
-interface isLoadingProviderProps {
-  children: ReactNode;
-}
+import { createContext, useContext, useState } from "react";
+import { isLoadingProviderProps, isLoadingType } from "../@types";
 
 export const isLoadingConfigContext = createContext({} as isLoadingType);
 

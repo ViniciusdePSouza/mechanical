@@ -1,5 +1,7 @@
 import { StatusBar } from "react-native";
+
 import { Routes } from "./src/routes";
+
 import { IsLoadingConfigProvider } from "./src/hooks/isLoadingContext";
 
 export default function App() {

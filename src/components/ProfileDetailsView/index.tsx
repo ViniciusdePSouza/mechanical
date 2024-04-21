@@ -1,6 +1,8 @@
-import { View, Text } from "react-native";
-import { styles } from "./styles";
 import { ProfileDetailsViewProps } from "../../@types";
+
+import { View, Text } from "react-native";
+
+import { styles } from "./styles";
 
 export function ProfileDetailsView({
   label,

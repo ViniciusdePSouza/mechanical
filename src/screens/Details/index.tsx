@@ -1,15 +1,17 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { DetailsProps, WorkshopProps } from "../../@types";
+
+import { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
 import { styles } from "./styles";
+import theme from "../../theme/global";
 
 import { Icon } from "@rneui/themed";
-
-import theme from "../../theme/global";
-import { useEffect, useState } from "react";
-import { DetailsProps, WorkshopProps } from "../../@types";
-import { ScrollView } from "react-native-gesture-handler";
-import { ProfileDetailsView } from "../../components/ProfileDetailsView";
 import { useTranslation } from "react-i18next";
+
+import { ProfileDetailsView } from "../../components/ProfileDetailsView";
 
 export function Details() {
   const [details, setDetails] = useState<WorkshopProps | undefined>(undefined);
