@@ -28,3 +28,7 @@ export interface ProfileDetailsViewProps {
 export interface RatingProps {
   rating: number;
 }
+
+export interface HeaderProps {
+  title: 'details' | 'add'
+}

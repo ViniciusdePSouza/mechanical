@@ -1,18 +1,18 @@
 import { DetailsProps, WorkshopProps } from "../../@types";
 
 import { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 import { styles } from "./styles";
 import theme from "../../theme/global";
 
-import { Icon } from "@rneui/themed";
 import { useTranslation } from "react-i18next";
 
 import { ProfileDetailsView } from "../../components/ProfileDetailsView";
 import { Rating } from "../../components/Rating";
+import { Header } from "../../components/Header";
 
 export function Details() {
   const [details, setDetails] = useState<WorkshopProps | undefined>(undefined);
@@ -34,17 +34,7 @@ export function Details() {
   }, [details]);
   return (
     <View style={{ flex: 1, backgroundColor: theme.COLORS.GRAY_400 }}>
-      <View style={styles.appBar}>
-        <TouchableOpacity style={styles.button} onPress={handleNavigation}>
-          <Icon
-            type="entypo"
-            name="back"
-            size={32}
-            color={theme.COLORS.GRAY_200}
-          />
-        </TouchableOpacity>
-        <Text style={styles.title}>{t("details")}</Text>
-      </View>
+      <Header title={"details"}/>
 
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.content}>
@@ -63,23 +53,23 @@ export function Details() {
               <Text style={styles.infoTittle}>{details?.Nome}</Text>
               <Text style={styles.subtitle}>{details?.DescricaoCurta}</Text>
               <ProfileDetailsView
-                label={`${t('phone')}1 : `}
-                content={details?.Telefone1 ?? `${t('noPhone')}`}
+                label={`${t("phone")}1 : `}
+                content={details?.Telefone1 ?? `${t("noPhone")}`}
               />
               <ProfileDetailsView
-                label={`${t('phone')}2 : `}
-                content={details?.Telefone2 ?? `${t('noPhone')}`}
+                label={`${t("phone")}2 : `}
+                content={details?.Telefone2 ?? `${t("noPhone")}`}
               />
               <ProfileDetailsView
-                label={`${t('address')} : `}
-                content={details?.Endereco ?? `${t('noAddress')}`}
+                label={`${t("address")} : `}
+                content={details?.Endereco ?? `${t("noAddress")}`}
               />
-              <Rating rating={details?.AvaliacaoUsuario ?? 0}/>
+              <Rating rating={details?.AvaliacaoUsuario ?? 0} />
             </View>
           </View>
 
           <View style={styles.section}>
-            <Text style={styles.infoTittle}>{t('about')}</Text>
+            <Text style={styles.infoTittle}>{t("about")}</Text>
             <Text style={styles.subtitle}>{details?.Descricao}</Text>
           </View>
         </View>
