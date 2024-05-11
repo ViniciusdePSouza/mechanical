@@ -155,7 +155,7 @@ export function IndicateFriend() {
       <SafeAreaView style={styles.container}>
         <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
           <ScrollView keyboardShouldPersistTaps="always">
-            <Text style={styles.title}>Indicate Friends</Text>
+            <Text style={styles.title}>{t('indicateFriends')}</Text>
 
             <View style={styles.form}>
               <Text style={styles.sectionTitle}>Informações do amigo</Text>
