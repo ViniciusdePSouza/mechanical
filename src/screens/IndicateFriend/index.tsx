@@ -143,7 +143,7 @@ export function IndicateFriend() {
     }
   }
 
-  async function handleIndication(body: any) {
+  async function handleIndication(body: IndicateFriendPostBody) {
     const response = await postFriend(body);
 
     return response;
