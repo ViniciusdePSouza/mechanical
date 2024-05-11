@@ -128,8 +128,8 @@ export function IndicateFriend() {
     try {
       const response = await handleIndication(body);
 
-      if (response["retornoErro"] != null) {
-        return Alert.alert(response["retornoErro"]);
+      if (response["Sucesso"] == null) {
+        throw new Error(response["RetornoErro"]["retornoErro"]);
       }
 
       Alert.alert(response["Sucesso"]);
@@ -137,12 +137,13 @@ export function IndicateFriend() {
       reset();
 
       navigation.navigate("DefineLanguage" as never);
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      const errorMessage = error.message;
+      Alert.alert(errorMessage);
     }
   }
 
-  async function handleIndication(body: IndicateFriendPostBody) {
+  async function handleIndication(body: any) {
     const response = await postFriend(body);
 
     return response;
