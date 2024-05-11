@@ -35,7 +35,8 @@ export function validateCPF(cpf: string) {
   return true;
 }
 
-export const platePattern = /^[A-Z]{3}\d{4}$/;
+export const platePattern = /^[A-Za-z]{3}-\d{4}$/;
+
 
 export function formatDate(date: Date) {
   const year = date.getFullYear();

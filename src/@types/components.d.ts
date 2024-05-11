@@ -1,4 +1,5 @@
 import { TextInputProps } from "react-native";
+import { TextInputMaskOptionProp, TextInputMaskTypeProp  } from "react-native-masked-text";
 
 export type ButtonType = "PRIMARY" | "SECONDARY";
 
@@ -11,6 +12,8 @@ export interface CustomButtonProps {
 
 export interface FormCustomInputProps extends TextInputProps {
   label: string;
+  type?: TextInputMaskTypeProp;
+  options?: TextInputMaskOptionProp 
 }
 
 export interface DetailsProps {

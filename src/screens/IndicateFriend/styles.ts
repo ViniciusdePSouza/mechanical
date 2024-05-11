@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     backgroundColor: theme.COLORS.GRAY_400,
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingTop: 40
   },
 
   scrollArea: {
@@ -19,7 +20,7 @@ export const styles = StyleSheet.create({
     fontWeight: "700",
     color: theme.COLORS.YELLOW_700,
     textAlign: "center",
-    marginVertical: 12,
+    marginBottom: 12,
   },
 
   form: {

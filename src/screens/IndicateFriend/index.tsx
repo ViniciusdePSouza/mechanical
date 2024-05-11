@@ -39,13 +39,23 @@ import { postFriend } from "../../services/friendService";
 import { useNavigation } from "@react-navigation/native";
 
 const IndicateFriendSchema = yup.object({
-  friendsName: yup.string().required(() => t("validationFriendsName")),
+  friendsName: yup
+    .string()
+    .required(() => t("validationFriendsName"))
+    .min(10, t("validationNameLength")),
   friendsEmail: yup
     .string()
     .email(() => t("validationValidEmail"))
     .required(() => t("validationFriendsEmail")),
-  friendsPhoneNumber: yup.string().required(() => t("validationFriendsPhone")),
-  associateName: yup.string().required(() => t("validationFriendsName")),
+  friendsPhoneNumber: yup
+    .string()
+    .required(() => t("validationFriendsPhone"))
+    .min(15, t("validationPhoneNumberLength"))
+    .max(15, t("validationPhoneNumberLength")),
+  associateName: yup
+    .string()
+    .required(() => t("validationFriendsName"))
+    .min(10, t("validationNameLength")),
   associateEmail: yup
     .string()
     .required(() => t("validationAssociateEmail"))
@@ -53,6 +63,7 @@ const IndicateFriendSchema = yup.object({
   associateCpf: yup
     .string()
     .required(() => t("validationCpfRequired"))
+    .min(11, t("validatorCpfLength"))
     .test({
       name: "cpf",
       message: () => t("cpfValiation"),
@@ -60,7 +71,9 @@ const IndicateFriendSchema = yup.object({
     }),
   associatePhoneNumber: yup
     .string()
-    .required(() => t("validationAssociatePhone")),
+    .required(() => t("validationAssociatePhone"))
+    .min(15, t("validationPhoneNumberLength"))
+    .max(15, t("validationPhoneNumberLength")),
   vehiclePlate: yup
     .string()
     .required(() => t("validationVehiclePlate"))
@@ -110,17 +123,19 @@ export function IndicateFriend() {
       Copias: [],
     };
 
-    const response = await handleIndication(body);
+    console.log(body);
 
-    if (response["retornoErro"] != null) {
-      return Alert.alert(response["retornoErro"]);
-    }
+    // const response = await handleIndication(body);
 
-    Alert.alert(response["Sucesso"]);
+    // if (response["retornoErro"] != null) {
+    //   return Alert.alert(response["retornoErro"]);
+    // }
 
-    reset();
+    // Alert.alert(response["Sucesso"]);
 
-    navigation.navigate("DefineLanguage" as never);
+    // reset();
+
+    // navigation.navigate("DefineLanguage" as never);
   }
 
   async function handleIndication(body: IndicateFriendPostBody) {
@@ -134,11 +149,9 @@ export function IndicateFriend() {
       <SafeAreaView style={styles.container}>
         <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
           <ScrollView
-            style={styles.container}
             keyboardShouldPersistTaps="always"
           >
             <Text style={styles.title}>Indicate Friends</Text>
-
 
             <View style={styles.form}>
               <Text style={styles.sectionTitle}>Informações do amigo</Text>
@@ -197,8 +210,14 @@ export function IndicateFriend() {
                       onChangeText={onChange}
                       onBlur={onBlur}
                       value={value}
+                      maxLength={15}
                       placeholder={t("friendsPhonePlaceholder")}
-                      keyboardType="phone-pad"
+                      type="cel-phone"
+                      options={{
+                        maskType: "BRL",
+                        withDDD: true,
+                        dddMask: "(99) ",
+                      }}
                     />
                   );
                 }}
@@ -262,6 +281,9 @@ export function IndicateFriend() {
                 render={({ field: { onChange, value, onBlur } }) => {
                   return (
                     <FormCustomInput
+                      type="cpf"
+                      options={{}}
+                      maxLength={14}
                       label={t("associateCpfPlaceholder")}
                       onChangeText={onChange}
                       onBlur={onBlur}
@@ -285,9 +307,16 @@ export function IndicateFriend() {
                 render={({ field: { onChange, value, onBlur } }) => {
                   return (
                     <FormCustomInput
+                      type="cel-phone"
+                      options={{
+                        maskType: "BRL",
+                        withDDD: true,
+                        dddMask: "(99) ",
+                      }}
                       label={t("friendsPhonePlaceholder")}
                       onChangeText={onChange}
                       onBlur={onBlur}
+                      maxLength={15}
                       value={value}
                       placeholder={t("friendsPhonePlaceholder")}
                       keyboardType="phone-pad"
@@ -308,6 +337,11 @@ export function IndicateFriend() {
                 render={({ field: { onChange, value, onBlur } }) => {
                   return (
                     <FormCustomInput
+                      type="custom"
+                      options={{
+                        mask: "AAA-9999",
+                      }}
+                      maxLength={8}
                       label={t("vehiclePlatePlaceholder")}
                       onChangeText={onChange}
                       onBlur={onBlur}
