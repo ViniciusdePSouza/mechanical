@@ -38,6 +38,7 @@ import { userInfo } from "../../config/user";
 import { postFriend } from "../../services/friendService";
 
 import { useNavigation } from "@react-navigation/native";
+import { formatOnlyNumbers } from "../../utils/validators/formatters";
 
 const IndicateFriendSchema = yup.object({
   friendsName: yup
@@ -109,13 +110,13 @@ export function IndicateFriend() {
     const indicationObj: IndicateFriendProps = {
       CodigoAssociacao: String(userInfo.associationCode),
       DataCriacao: formattedDate,
-      CpfAssociado: associateCpf,
+      CpfAssociado: formatOnlyNumbers(associateCpf),
       EmailAssociado: associateEmail,
       NomeAssociado: associateName,
-      TelefoneAssociado: associatePhoneNumber,
+      TelefoneAssociado: formatOnlyNumbers(associatePhoneNumber),
       PlacaVeiculoAssociado: vehiclePlate,
       NomeAmigo: friendsName,
-      TelefoneAmigo: friendsPhoneNumber,
+      TelefoneAmigo: formatOnlyNumbers(friendsPhoneNumber),
       EmailAmigo: friendsEmail,
     };
 
