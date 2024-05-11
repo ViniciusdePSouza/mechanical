@@ -27,6 +27,7 @@ import { Controller, useForm } from "react-hook-form";
 import { t } from "i18next";
 
 import {
+  emailPattern,
   formatDate,
   platePattern,
   validateCPF,
@@ -46,7 +47,8 @@ const IndicateFriendSchema = yup.object({
   friendsEmail: yup
     .string()
     .email(() => t("validationValidEmail"))
-    .required(() => t("validationFriendsEmail")),
+    .required(() => t("validationFriendsEmail"))
+    .matches(emailPattern, () => t("validationValidEmail")),
   friendsPhoneNumber: yup
     .string()
     .required(() => t("validationFriendsPhone"))
@@ -59,7 +61,7 @@ const IndicateFriendSchema = yup.object({
   associateEmail: yup
     .string()
     .required(() => t("validationAssociateEmail"))
-    .email(() => t("validationValidEmail")),
+    .matches(emailPattern, () => t("validationValidEmail")),
   associateCpf: yup
     .string()
     .required(() => t("validationCpfRequired"))
@@ -123,19 +125,21 @@ export function IndicateFriend() {
       Copias: [],
     };
 
-    console.log(body);
+    try {
+      const response = await handleIndication(body);
 
-    // const response = await handleIndication(body);
+      if (response["retornoErro"] != null) {
+        return Alert.alert(response["retornoErro"]);
+      }
 
-    // if (response["retornoErro"] != null) {
-    //   return Alert.alert(response["retornoErro"]);
-    // }
+      Alert.alert(response["Sucesso"]);
 
-    // Alert.alert(response["Sucesso"]);
+      reset();
 
-    // reset();
-
-    // navigation.navigate("DefineLanguage" as never);
+      navigation.navigate("DefineLanguage" as never);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async function handleIndication(body: IndicateFriendPostBody) {
@@ -148,9 +152,7 @@ export function IndicateFriend() {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={styles.container}>
         <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
-          <ScrollView
-            keyboardShouldPersistTaps="always"
-          >
+          <ScrollView keyboardShouldPersistTaps="always">
             <Text style={styles.title}>Indicate Friends</Text>
 
             <View style={styles.form}>

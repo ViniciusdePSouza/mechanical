@@ -35,8 +35,9 @@ export function validateCPF(cpf: string) {
   return true;
 }
 
-export const platePattern = /^[A-Za-z]{3}-\d{4}$/;
+export const platePattern: RegExp = /^[A-Za-z]{3}-\d{4}$/;
 
+export const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export function formatDate(date: Date) {
   const year = date.getFullYear();
