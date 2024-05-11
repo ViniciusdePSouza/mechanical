@@ -139,7 +139,9 @@ export function IndicateFriend() {
 
       navigation.navigate("DefineLanguage" as never);
     } catch (error: any) {
-      const errorMessage = error.message;
+      const errorMessage = error.message
+        ? error.message
+        : () => t("genericErrorMessage");
       Alert.alert(errorMessage);
     }
   }
@@ -155,7 +157,7 @@ export function IndicateFriend() {
       <SafeAreaView style={styles.container}>
         <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
           <ScrollView keyboardShouldPersistTaps="always">
-            <Text style={styles.title}>{t('indicateFriends')}</Text>
+            <Text style={styles.title}>{t("indicateFriends")}</Text>
 
             <View style={styles.form}>
               <Text style={styles.sectionTitle}>Informações do amigo</Text>
@@ -317,12 +319,12 @@ export function IndicateFriend() {
                         withDDD: true,
                         dddMask: "(99) ",
                       }}
-                      label={t("friendsPhonePlaceholder")}
+                      label={t("associatePhonePlaceholder")}
                       onChangeText={onChange}
                       onBlur={onBlur}
                       maxLength={15}
                       value={value}
-                      placeholder={t("friendsPhonePlaceholder")}
+                      placeholder={t("associatePhonePlaceholder")}
                       keyboardType="phone-pad"
                     />
                   );

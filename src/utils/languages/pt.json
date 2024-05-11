@@ -1,6 +1,7 @@
 {
   "translation": {
     "chooseYourLanguageTitle": "Escolha seu idioma",
+    "genericErrorMessage": "Algo deu errado, tente novamente mais tarde",
     "continue": "Continuar",
     "indicateFriends": "Indicar Amigos",
     "details": "Detalhes",
@@ -26,7 +27,7 @@
     "associatePhonePlaceholder": "Telefone do associado",
     "validationVehiclePlate": "Placa do veículo é obrigatória",
     "vehiclePlatePatternValidation": "Formato de placa inválido",
-    "vehiclePlatePlaceholder": "Placa do veículo => XXX0000",
+    "vehiclePlatePlaceholder": "Placa do veículo => XXX-0000",
     "phone": "Telefone",
     "address": "Endereço",
     "noPhone": "Nenhum telefone cadastrado",
