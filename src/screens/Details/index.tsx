@@ -1,7 +1,7 @@
 import { DetailsProps, WorkshopProps } from "../../@types";
 
 import { useEffect, useState } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
@@ -17,15 +17,13 @@ import { Header } from "../../components/Header";
 export function Details() {
   const [details, setDetails] = useState<WorkshopProps | undefined>(undefined);
 
-  const navigation = useNavigation();
+
   const route = useRoute();
   const params = route.params as DetailsProps;
 
   const { t } = useTranslation();
 
-  function handleNavigation() {
-    navigation.goBack();
-  }
+
 
   useEffect(() => {
     if (params["workshop"] && params != undefined) {
@@ -36,7 +34,7 @@ export function Details() {
     <View style={{ flex: 1, backgroundColor: theme.COLORS.GRAY_400 }}>
       <Header title={"details"}/>
 
-      <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.banner}>
             <Image
@@ -64,16 +62,16 @@ export function Details() {
                 label={`${t("address")} : `}
                 content={details?.Endereco ?? `${t("noAddress")}`}
               />
-              <Rating rating={details?.AvaliacaoUsuario ?? 0} />
             </View>
+              <Rating rating={details?.AvaliacaoUsuario ?? 0} />
           </View>
 
-          <View style={styles.section}>
+          <ScrollView contentContainerStyle={styles.section}>
             <Text style={styles.infoTittle}>{t("about")}</Text>
             <Text style={styles.subtitle}>{details?.Descricao}</Text>
-          </View>
+          </ScrollView>
         </View>
-      </ScrollView>
+      </View>
     </View>
   );
 }

@@ -7,8 +7,6 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: "row",
         gap: 12,
-        marginTop: 12,
-        marginBottom: 4,
     },
     title: {
         fontWeight: "700",

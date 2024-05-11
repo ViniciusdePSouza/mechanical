@@ -4,31 +4,8 @@ import theme from "../../theme/global";
 export const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    paddingHorizontal: 24,
-    marginBottom: 32,
-  },
-
-  appBar: {
-    width: "100%",
-    backgroundColor: theme.COLORS.GRAY_600,
-    justifyContent: "space-between",
-    alignItems: "flex-end",
-    flexDirection: "row",
-    height: "13%",
-    paddingHorizontal: 20,
-    paddingBottom: 16,
-  },
-  title: {
+    paddingHorizontal: 18,
     flex: 1,
-    textAlign: "center",
-    marginRight: 92,
-    fontSize: 24,
-    fontWeight: "bold",
-    color: theme.COLORS.GRAY_200,
-  },
-  button: {
-    alignItems: "flex-start",
-    width: "30%",
   },
   image: {
     marginBottom: 12,
@@ -40,15 +17,18 @@ export const styles = StyleSheet.create({
   },
   content: {
     width: "100%",
-    marginHorizontal: 12,
+    marginVertical: 12,
+    flexGrow: 1,
+    flex: 1
   },
   banner: {
     flexShrink: 1,
-    marginTop: 24,
-    paddingHorizontal: 24,
-    paddingBottom: 12,
+    maxHeight: "70%",
+    marginTop: 12,
+    paddingHorizontal: 12,
     backgroundColor: theme.COLORS.GRAY_500,
     borderRadius: 8,
+    paddingBottom: 48,
   },
   infoTittle: {
     fontSize: 20,
@@ -69,6 +49,6 @@ export const styles = StyleSheet.create({
     marginBottom: 8,
   },
   section: {
-    marginTop: 12,
+    marginVertical: 12,
   },
 });
