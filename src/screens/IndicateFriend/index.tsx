@@ -18,7 +18,7 @@ import {
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 import { styles } from "./styles";
-import theme from '../../theme/global'
+import theme from "../../theme/global";
 
 import { FormCustomInput } from "../../components/FormInput";
 
@@ -380,9 +380,11 @@ export function IndicateFriend() {
                   disabled={!isValid || isSubmitting}
                 >
                   {isSubmitting ? (
-                    <ActivityIndicator color={theme.COLORS.YELLOW_700}/>
+                    <ActivityIndicator color={theme.COLORS.YELLOW_700} />
+                  ) : isValid ? (
+                    <Text style={styles.buttonText}>{t("save")}</Text>
                   ) : (
-                    <Text style={styles.buttonText}>{t('save')}</Text>
+                    <Text style={styles.buttonText}>{t("checkForm")}</Text>
                   )}
                 </TouchableOpacity>
               </View>
