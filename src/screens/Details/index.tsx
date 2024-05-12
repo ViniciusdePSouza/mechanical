@@ -13,17 +13,15 @@ import { useTranslation } from "react-i18next";
 import { ProfileDetailsView } from "../../components/ProfileDetailsView";
 import { Rating } from "../../components/Rating";
 import { Header } from "../../components/Header";
+import { Section } from "../../components/Section";
 
 export function Details() {
   const [details, setDetails] = useState<WorkshopProps | undefined>(undefined);
-
 
   const route = useRoute();
   const params = route.params as DetailsProps;
 
   const { t } = useTranslation();
-
-
 
   useEffect(() => {
     if (params["workshop"] && params != undefined) {
@@ -32,7 +30,7 @@ export function Details() {
   }, [details]);
   return (
     <View style={{ flex: 1, backgroundColor: theme.COLORS.GRAY_400 }}>
-      <Header title={"details"}/>
+      <Header title={"details"} />
 
       <View style={styles.container}>
         <View style={styles.content}>
@@ -63,13 +61,12 @@ export function Details() {
                 content={details?.Endereco ?? `${t("noAddress")}`}
               />
             </View>
-              <Rating rating={details?.AvaliacaoUsuario ?? 0} />
+            <Rating rating={details?.AvaliacaoUsuario ?? 0} />
           </View>
 
-          <ScrollView contentContainerStyle={styles.section}>
-            <Text style={styles.infoTittle}>{t("about")}</Text>
-            <Text style={styles.subtitle}>{details?.Descricao}</Text>
-          </ScrollView>
+          {details != null && (
+            <Section title={"about"} subtitle={details?.Descricao} />
+          )}
         </View>
       </View>
     </View>

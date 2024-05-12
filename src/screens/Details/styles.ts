@@ -48,8 +48,4 @@ export const styles = StyleSheet.create({
     color: theme.COLORS.GRAY_200,
     marginBottom: 8,
   },
-  section: {
-    marginVertical: 12,
-    paddingBottom: 16
-  },
 });

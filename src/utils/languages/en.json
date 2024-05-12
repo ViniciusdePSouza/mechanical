@@ -1,5 +1,8 @@
 {
   "translation": {
+    "save": "Save",
+    "friendsInfo": "Friend's Info",
+    "associatesInfo": "Associate's Info",
     "chooseYourLanguageTitle": "Choose your language",
     "continue": "Continue",
     "genericErrorMessage": "Somenthing went wrong, try again later",

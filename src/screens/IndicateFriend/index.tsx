@@ -13,10 +13,12 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 import { styles } from "./styles";
+import theme from '../../theme/global'
 
 import { FormCustomInput } from "../../components/FormInput";
 
@@ -39,6 +41,7 @@ import { postFriend } from "../../services/friendService";
 
 import { useNavigation } from "@react-navigation/native";
 import { formatNumbersOnly } from "../../utils/validators/formatters";
+import { Loading } from "../../components/Loading";
 
 const IndicateFriendSchema = yup.object({
   friendsName: yup
@@ -90,7 +93,7 @@ export function IndicateFriend() {
     control,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isValid, isSubmitting },
   } = useForm<IndicateFriendFormData>({
     resolver: yupResolver(IndicateFriendSchema),
   });
@@ -160,7 +163,7 @@ export function IndicateFriend() {
             <Text style={styles.title}>{t("indicateFriends")}</Text>
 
             <View style={styles.form}>
-              <Text style={styles.sectionTitle}>Informações do amigo</Text>
+              <Text style={styles.sectionTitle}>{t("friendsInfo")}</Text>
 
               <Controller
                 name="friendsName"
@@ -235,7 +238,7 @@ export function IndicateFriend() {
                 </Text>
               )}
 
-              <Text style={styles.sectionTitle}>Informações do associado</Text>
+              <Text style={styles.sectionTitle}>{t("associatesInfo")}</Text>
 
               <Controller
                 name="associateName"
@@ -319,21 +322,21 @@ export function IndicateFriend() {
                         withDDD: true,
                         dddMask: "(99) ",
                       }}
-                      label={t("friendsPhonePlaceholder")}
+                      label={t("associatePhonePlaceholder")}
                       onChangeText={onChange}
                       onBlur={onBlur}
                       maxLength={15}
                       value={value}
-                      placeholder={t("friendsPhonePlaceholder")}
+                      placeholder={t("associatePhonePlaceholder")}
                       keyboardType="phone-pad"
                     />
                   );
                 }}
               />
 
-              {errors.friendsPhoneNumber && (
+              {errors.associatePhoneNumber && (
                 <Text style={styles.errorMessage}>
-                  {errors.friendsPhoneNumber.message}
+                  {errors.associatePhoneNumber.message}
                 </Text>
               )}
 
@@ -341,6 +344,11 @@ export function IndicateFriend() {
                 name="vehiclePlate"
                 control={control}
                 render={({ field: { onChange, value, onBlur } }) => {
+                  const handleChange = (text: string) => {
+                    const upperCaseText = text.toUpperCase();
+                    onChange(upperCaseText);
+                  };
+
                   return (
                     <FormCustomInput
                       type="custom"
@@ -349,7 +357,7 @@ export function IndicateFriend() {
                       }}
                       maxLength={8}
                       label={t("vehiclePlatePlaceholder")}
-                      onChangeText={onChange}
+                      onChangeText={handleChange}
                       onBlur={onBlur}
                       value={value}
                       placeholder={t("vehiclePlatePlaceholder")}
@@ -368,9 +376,14 @@ export function IndicateFriend() {
               <View style={{ width: "90%", marginTop: 16 }}>
                 <TouchableOpacity
                   onPress={handleSubmit(handleIndicateFriend)}
-                  style={styles.button}
+                  style={[styles.button, !isValid && styles.disabledButton]}
+                  disabled={!isValid || isSubmitting}
                 >
-                  <Text style={styles.buttonText}>Salvar</Text>
+                  {isSubmitting ? (
+                    <ActivityIndicator color={theme.COLORS.YELLOW_700}/>
+                  ) : (
+                    <Text style={styles.buttonText}>{t('save')}</Text>
+                  )}
                 </TouchableOpacity>
               </View>
             </View>

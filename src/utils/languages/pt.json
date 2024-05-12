@@ -1,5 +1,8 @@
 {
   "translation": {
+    "save": "Salvar",
+    "friendsInfo": "Informações do amigo",
+    "associatesInfo": "Informações do associado",
     "chooseYourLanguageTitle": "Escolha seu idioma",
     "genericErrorMessage": "Algo deu errado, tente novamente mais tarde",
     "continue": "Continuar",
