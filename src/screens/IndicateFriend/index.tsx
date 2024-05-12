@@ -319,12 +319,12 @@ export function IndicateFriend() {
                         withDDD: true,
                         dddMask: "(99) ",
                       }}
-                      label={t("associatePhonePlaceholder")}
+                      label={t("friendsPhonePlaceholder")}
                       onChangeText={onChange}
                       onBlur={onBlur}
                       maxLength={15}
                       value={value}
-                      placeholder={t("associatePhonePlaceholder")}
+                      placeholder={t("friendsPhonePlaceholder")}
                       keyboardType="phone-pad"
                     />
                   );

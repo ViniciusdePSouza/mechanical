@@ -19,7 +19,6 @@ export const styles = StyleSheet.create({
     fontSize: theme.FONT_SIZE.LG,
     fontWeight: "700",
     color: theme.COLORS.WHITE,
-    marginBottom: 12,
   },
   description: {
     fontSize: theme.FONT_SIZE.SM,
