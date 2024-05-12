@@ -50,5 +50,6 @@ export const styles = StyleSheet.create({
   },
   section: {
     marginVertical: 12,
+    paddingBottom: 16
   },
 });

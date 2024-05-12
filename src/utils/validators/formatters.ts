@@ -1,3 +1,3 @@
-export function formatOnlyNumbers(data: string) {
+export function formatNumbersOnly(data: string) {
   return data.replace(/\D/g, "");
 }
