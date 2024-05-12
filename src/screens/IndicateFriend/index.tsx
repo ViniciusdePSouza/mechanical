@@ -175,7 +175,7 @@ export function IndicateFriend() {
                       onChangeText={onChange}
                       onBlur={onBlur}
                       value={value}
-                      placeholder={t("friendsNamePlaceholder")}
+                      placeholder={t("Rock Balboa")}
                     />
                   );
                 }}
@@ -197,7 +197,7 @@ export function IndicateFriend() {
                       onChangeText={onChange}
                       onBlur={onBlur}
                       value={value}
-                      placeholder={t("friendsEmailPlaceholder")}
+                      placeholder={'rocky@email.com'}
                     />
                   );
                 }}
@@ -220,7 +220,7 @@ export function IndicateFriend() {
                       onBlur={onBlur}
                       value={value}
                       maxLength={15}
-                      placeholder={t("friendsPhonePlaceholder")}
+                      placeholder={'(00) 00000-0000'}
                       type="cel-phone"
                       options={{
                         maskType: "BRL",
@@ -250,7 +250,7 @@ export function IndicateFriend() {
                       onChangeText={onChange}
                       onBlur={onBlur}
                       value={value}
-                      placeholder={t("associateNamePlaceholder")}
+                      placeholder={'Vin Diesel'}
                     />
                   );
                 }}
@@ -272,7 +272,7 @@ export function IndicateFriend() {
                       onChangeText={onChange}
                       onBlur={onBlur}
                       value={value}
-                      placeholder={t("associateEmailPlaceholder")}
+                      placeholder={'vin@email.com'}
                     />
                   );
                 }}
@@ -297,7 +297,7 @@ export function IndicateFriend() {
                       onChangeText={onChange}
                       onBlur={onBlur}
                       value={value}
-                      placeholder={t("associateCpfPlaceholder")}
+                      placeholder={'000.000.000-00'}
                       keyboardType="number-pad"
                     />
                   );
@@ -327,7 +327,7 @@ export function IndicateFriend() {
                       onBlur={onBlur}
                       maxLength={15}
                       value={value}
-                      placeholder={t("associatePhonePlaceholder")}
+                      placeholder={'(00) 00000-0000'}
                       keyboardType="phone-pad"
                     />
                   );
@@ -360,7 +360,7 @@ export function IndicateFriend() {
                       onChangeText={handleChange}
                       onBlur={onBlur}
                       value={value}
-                      placeholder={t("vehiclePlatePlaceholder")}
+                      placeholder={'XXX-0000'}
                       keyboardType="name-phone-pad"
                     />
                   );

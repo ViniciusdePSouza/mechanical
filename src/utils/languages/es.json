@@ -31,7 +31,7 @@
     "associatePhonePlaceholder": "Número de teléfono del asociado",
     "validationVehiclePlate": "La matrícula del vehículo es obligatoria.",
     "vehiclePlatePatternValidation": "Patrón de placa no válido",
-    "vehiclePlatePlaceholder": "Placa del vehículo => XXX-0000",
+    "vehiclePlatePlaceholder": "Placa del vehículo",
     "phone": "Teléfono",
     "address": "Dirección",
     "noPhone": "Sin teléfono cadastrado",

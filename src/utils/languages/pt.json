@@ -31,7 +31,7 @@
     "associatePhonePlaceholder": "Telefone do associado",
     "validationVehiclePlate": "Placa do veículo é obrigatória",
     "vehiclePlatePatternValidation": "Formato de placa inválido",
-    "vehiclePlatePlaceholder": "Placa do veículo => XXX-0000",
+    "vehiclePlatePlaceholder": "Placa do veículo",
     "phone": "Telefone",
     "address": "Endereço",
     "noPhone": "Nenhum telefone cadastrado",

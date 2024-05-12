@@ -31,11 +31,10 @@
     "associatePhonePlaceholder": "Numéro de téléphone de l'associé",
     "validationVehiclePlate": "La plaque d'immatriculation du véhicule est obligatoire",
     "vehiclePlatePatternValidation": "Modèle de plaque invalide",
-    "vehiclePlatePlaceholder": "Plaque du véhicule => XXX-0000",
+    "vehiclePlatePlaceholder": "Plaque du véhicule",
     "phone": "Téléphone",
     "address": "Adresse",
-    "noPhone": "Aucun téléphone enregistré",
-    "noAddress": "Aucune adresse enregistrée",
+    "noAddress": "Aucune adresse enregistréeS",
     "about": "À propos de nous"
   }
 }

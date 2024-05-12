@@ -31,7 +31,7 @@
     "associatePhonePlaceholder": "Associate's phone number",
     "validationVehiclePlate": "Vehicle Plate is required",
     "vehiclePlatePatternValidation": "Invalid plate pattern",
-    "vehiclePlatePlaceholder": "Vehicle plate => XXX-0000",
+    "vehiclePlatePlaceholder": "Vehicle plate",
     "phone": "Phone",
     "address": "Address",
     "noPhone": "No phone registered",
