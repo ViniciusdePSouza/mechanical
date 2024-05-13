@@ -35,6 +35,7 @@
     "phone": "Téléphone",
     "address": "Adresse",
     "noAddress": "Aucune adresse enregistréeS",
-    "about": "À propos de nous"
+    "about": "À propos de nous",
+    "validationPhoneNumberLength": "Le téléphone doit comporter au moins 11 chiffres"
   }
 }

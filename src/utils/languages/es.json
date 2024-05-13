@@ -36,6 +36,7 @@
     "address": "Dirección",
     "noPhone": "Sin teléfono cadastrado",
     "noAddress": "Sin dirección registrada",
-    "about": "Sobre nosotros"
+    "about": "Sobre nosotros",
+    "validationPhoneNumberLength": "El teléfono debe tener al menos 11 dígitos"
   }
 }

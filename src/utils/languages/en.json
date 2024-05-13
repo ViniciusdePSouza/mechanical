@@ -36,6 +36,7 @@
     "address": "Address",
     "noPhone": "No phone registered",
     "noAddress": "No address registered",
-    "about": "About Us"
+    "about": "About Us",
+    "validationPhoneNumberLength": "Phone must have 11 digits at least"
   }
 }
