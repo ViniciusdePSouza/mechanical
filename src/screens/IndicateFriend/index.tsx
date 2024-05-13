@@ -42,6 +42,7 @@ import { postFriend } from "../../services/friendService";
 import { useNavigation } from "@react-navigation/native";
 import { formatNumbersOnly } from "../../utils/validators/formatters";
 import { Loading } from "../../components/Loading";
+import { useEffect, useRef } from "react";
 
 const IndicateFriendSchema = yup.object({
   friendsName: yup
@@ -88,6 +89,7 @@ const IndicateFriendSchema = yup.object({
 
 export function IndicateFriend() {
   const navigation = useNavigation();
+  const scrollViewRef = useRef<ScrollView>(null);
 
   const {
     control,
@@ -155,11 +157,21 @@ export function IndicateFriend() {
     return response;
   }
 
+  useEffect(() => {
+    if (isValid == false) {
+      scrollViewRef.current?.scrollTo({ x: 0, y: 0, animated: true });
+    }
+  }, [errors]);
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={styles.container}>
         <KeyboardAvoidingView style={{ flex: 1 }} behavior="position">
-          <ScrollView keyboardShouldPersistTaps="always">
+          <ScrollView
+            keyboardShouldPersistTaps="always"
+            keyboardDismissMode="on-drag"
+            ref={scrollViewRef}
+          >
             <Text style={styles.title}>{t("indicateFriends")}</Text>
 
             <View style={styles.form}>
@@ -376,7 +388,10 @@ export function IndicateFriend() {
               <View style={{ width: "90%", marginTop: 16 }}>
                 <TouchableOpacity
                   onPress={handleSubmit(handleIndicateFriend)}
-                  style={styles.button}
+                  style={[
+                    styles.button,
+                    isSubmitting ? styles.disabledButton : null,
+                  ]}
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
