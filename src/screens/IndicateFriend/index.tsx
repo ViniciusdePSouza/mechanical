@@ -158,7 +158,7 @@ export function IndicateFriend() {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={styles.container}>
-        <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+        <KeyboardAvoidingView style={{ flex: 1 }} behavior="position">
           <ScrollView keyboardShouldPersistTaps="always">
             <Text style={styles.title}>{t("indicateFriends")}</Text>
 
@@ -197,7 +197,7 @@ export function IndicateFriend() {
                       onChangeText={onChange}
                       onBlur={onBlur}
                       value={value}
-                      placeholder={'rocky@email.com'}
+                      placeholder={"rocky@email.com"}
                     />
                   );
                 }}
@@ -220,7 +220,7 @@ export function IndicateFriend() {
                       onBlur={onBlur}
                       value={value}
                       maxLength={15}
-                      placeholder={'(00) 00000-0000'}
+                      placeholder={"(00) 00000-0000"}
                       type="cel-phone"
                       options={{
                         maskType: "BRL",
@@ -250,7 +250,7 @@ export function IndicateFriend() {
                       onChangeText={onChange}
                       onBlur={onBlur}
                       value={value}
-                      placeholder={'Vin Diesel'}
+                      placeholder={"Vin Diesel"}
                     />
                   );
                 }}
@@ -272,7 +272,7 @@ export function IndicateFriend() {
                       onChangeText={onChange}
                       onBlur={onBlur}
                       value={value}
-                      placeholder={'vin@email.com'}
+                      placeholder={"vin@email.com"}
                     />
                   );
                 }}
@@ -297,7 +297,7 @@ export function IndicateFriend() {
                       onChangeText={onChange}
                       onBlur={onBlur}
                       value={value}
-                      placeholder={'000.000.000-00'}
+                      placeholder={"000.000.000-00"}
                       keyboardType="number-pad"
                     />
                   );
@@ -327,7 +327,7 @@ export function IndicateFriend() {
                       onBlur={onBlur}
                       maxLength={15}
                       value={value}
-                      placeholder={'(00) 00000-0000'}
+                      placeholder={"(00) 00000-0000"}
                       keyboardType="phone-pad"
                     />
                   );
@@ -360,7 +360,7 @@ export function IndicateFriend() {
                       onChangeText={handleChange}
                       onBlur={onBlur}
                       value={value}
-                      placeholder={'XXX-0000'}
+                      placeholder={"XXX-0000"}
                       keyboardType="name-phone-pad"
                     />
                   );
@@ -376,15 +376,13 @@ export function IndicateFriend() {
               <View style={{ width: "90%", marginTop: 16 }}>
                 <TouchableOpacity
                   onPress={handleSubmit(handleIndicateFriend)}
-                  style={[styles.button, !isValid && styles.disabledButton]}
-                  disabled={!isValid || isSubmitting}
+                  style={styles.button}
+                  disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    <ActivityIndicator color={theme.COLORS.YELLOW_700} />
-                  ) : isValid ? (
-                    <Text style={styles.buttonText}>{t("save")}</Text>
+                    <ActivityIndicator color={theme.COLORS.GRAY_600} />
                   ) : (
-                    <Text style={styles.buttonText}>{t("checkForm")}</Text>
+                    <Text style={styles.buttonText}>{t("save")}</Text>
                   )}
                 </TouchableOpacity>
               </View>
